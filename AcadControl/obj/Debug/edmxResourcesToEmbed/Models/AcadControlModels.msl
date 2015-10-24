@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AcadControlModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Aluno">
+      <EntityTypeMapping TypeName="AcadControlModel.Aluno">
+        <MappingFragment StoreEntitySet="Aluno">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom_alu" ColumnName="nom_alu" />
+          <ScalarProperty Name="tot_cred" ColumnName="tot_cred" />
+          <ScalarProperty Name="dat_nasc" ColumnName="dat_nasc" />
+          <ScalarProperty Name="mgp" ColumnName="mgp" />
+          <ScalarProperty Name="id_curso" ColumnName="id_curso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Curso">
+      <EntityTypeMapping TypeName="AcadControlModel.Curso">
+        <MappingFragment StoreEntitySet="Curso">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom_curso" ColumnName="nom_curso" />
+          <ScalarProperty Name="tot_cred" ColumnName="tot_cred" />
+          <ScalarProperty Name="id_prof" ColumnName="id_prof" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Disciplina">
+      <EntityTypeMapping TypeName="AcadControlModel.Disciplina">
+        <MappingFragment StoreEntitySet="Disciplina">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom_disc" ColumnName="nom_disc" />
+          <ScalarProperty Name="creditos" ColumnName="creditos" />
+          <ScalarProperty Name="tpo_disc" ColumnName="tpo_disc" />
+          <ScalarProperty Name="horas_obrig" ColumnName="horas_obrig" />
+          <ScalarProperty Name="limite_faltas" ColumnName="limite_faltas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Historico">
+      <EntityTypeMapping TypeName="AcadControlModel.Historico">
+        <MappingFragment StoreEntitySet="Historico">
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="semestre" ColumnName="semestre" />
+          <ScalarProperty Name="id_aluno" ColumnName="id_aluno" />
+          <ScalarProperty Name="id_disc" ColumnName="id_disc" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="media" ColumnName="media" />
+          <ScalarProperty Name="faltas" ColumnName="faltas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Matricula">
+      <EntityTypeMapping TypeName="AcadControlModel.Matricula">
+        <MappingFragment StoreEntitySet="Matricula">
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="semestre" ColumnName="semestre" />
+          <ScalarProperty Name="id_aluno" ColumnName="id_aluno" />
+          <ScalarProperty Name="id_disc" ColumnName="id_disc" />
+          <ScalarProperty Name="nota_01" ColumnName="nota_01" />
+          <ScalarProperty Name="nota_02" ColumnName="nota_02" />
+          <ScalarProperty Name="nota_03" ColumnName="nota_03" />
+          <ScalarProperty Name="faltas_01" ColumnName="faltas_01" />
+          <ScalarProperty Name="faltas_02" ColumnName="faltas_02" />
+          <ScalarProperty Name="faltas_03" ColumnName="faltas_03" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Matriz">
+      <EntityTypeMapping TypeName="AcadControlModel.Matriz">
+        <MappingFragment StoreEntitySet="Matriz">
+          <ScalarProperty Name="id_disc" ColumnName="id_disc" />
+          <ScalarProperty Name="id_curso" ColumnName="id_curso" />
+          <ScalarProperty Name="periodo" ColumnName="periodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Periodo_Letivo">
+      <EntityTypeMapping TypeName="AcadControlModel.Periodo_Letivo">
+        <MappingFragment StoreEntitySet="Periodo_Letivo">
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="semestre" ColumnName="semestre" />
+          <ScalarProperty Name="dat_ini" ColumnName="dat_ini" />
+          <ScalarProperty Name="dat_fim" ColumnName="dat_fim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professor">
+      <EntityTypeMapping TypeName="AcadControlModel.Professor">
+        <MappingFragment StoreEntitySet="Professor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mat_prof" ColumnName="mat_prof" />
+          <ScalarProperty Name="nom_prof" ColumnName="nom_prof" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Turma">
+      <EntityTypeMapping TypeName="AcadControlModel.Turma">
+        <MappingFragment StoreEntitySet="Turma">
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="semestre" ColumnName="semestre" />
+          <ScalarProperty Name="id_disc" ColumnName="id_disc" />
+          <ScalarProperty Name="vagas" ColumnName="vagas" />
+          <ScalarProperty Name="id_prof" ColumnName="id_prof" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

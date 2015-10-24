@@ -43,11 +43,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -66,7 +76,39 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bootstrap\Content\bootstrap.css" />
+    <Content Include="Assets\bootstrap\Content\bootstrap.min.css" />
+    <Content Include="Assets\css\app.css" />
+    <Content Include="Index.aspx" />
+    <Content Include="Models\AcadControlModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AcadControlModels.edmx</DependentUpon>
+      <LastGenOutput>AcadControlModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AcadControlModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AcadControlModels.edmx</DependentUpon>
+      <LastGenOutput>AcadControlModels.cs</LastGenOutput>
+    </Content>
     <Content Include="packages.config" />
+    <Content Include="Assets\bootstrap\Content\bootstrap.min.css.map" />
+    <Content Include="Assets\bootstrap\Content\bootstrap.css.map" />
+    <None Include="Assets\bootstrap\Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Assets\bootstrap\Scripts\bootstrap.js" />
+    <Content Include="Assets\bootstrap\Scripts\bootstrap.min.js" />
+    <Content Include="Assets\bootstrap\Scripts\jquery-1.9.1.js" />
+    <Content Include="Assets\bootstrap\Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Assets\bootstrap\Scripts\jquery-1.9.1.min.map" />
+    <EntityDeploy Include="Models\AcadControlModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AcadControlModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AcadControlModels.edmx.diagram">
+      <DependentUpon>AcadControlModels.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\Disciplina\Form.aspx" />
+    <Content Include="Views\Disciplina\Index.aspx" />
+    <Content Include="Views\MasterPage\App.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -78,13 +120,86 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\DisciplinaController.cs" />
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AcadControlModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AcadControlModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AcadControlModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AcadControlModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AcadControlModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Aluno.cs">
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Curso.cs">
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Disciplina.cs">
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Historico.cs">
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Matricula.cs">
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Matriz.cs">
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Periodo_Letivo.cs">
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Professor.cs">
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Turma.cs">
+      <DependentUpon>AcadControlModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Disciplina\Form.aspx.cs">
+      <DependentUpon>Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Disciplina\Form.aspx.designer.cs">
+      <DependentUpon>Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Disciplina\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Disciplina\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPage\App.Master.cs">
+      <DependentUpon>App.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\MasterPage\App.Master.designer.cs">
+      <DependentUpon>App.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Folder Include="Assets\js\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

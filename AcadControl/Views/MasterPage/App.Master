@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="App.master.cs" Inherits="AcadControl.Views.MasterPage.App" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Assets/bootstrap/Content/bootstrap-theme.min.css" />
+    <link href="/Assets/css/app.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <header class="navbar navbar-default" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/index.aspx" class="navbar-brand">AcadControl</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/Views/Disciplina/Index.aspx"> 
+                           Disciplinas
+                        </a> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <% if (Session["flash_message"] != null || Session["error_message"] != null) { %>
+            <div class="messages">
+                <% if (Session["flash_message"] != null) { %>
+                <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <%= Session["flash_message"] %>
+                </div>
+                <%
+                    Session.Remove("flash_message");
+                }
+                %>
+
+                <% if (Session["error_message"] != null) { %>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <%= Session["error_message"] %>
+                </div>
+                <%
+                    Session.Remove("error_message");
+                }
+                %>
+            </div>
+        <% } %>
+    </div>  
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+
+    <script src="/Assets/bootstrap/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="/Assets/bootstrap/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
