@@ -28,6 +28,11 @@
                            Disciplinas
                         </a> 
                     </li>
+                    <li>
+                        <a href="/Views/Professor/Index.aspx"> 
+                           Professores
+                        </a> 
+                    </li>
                 </ul>
             </div>
         </div>
