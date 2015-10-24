@@ -12,15 +12,15 @@ namespace AcadControl.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Disciplinas
+    public partial class Disciplina
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Disciplinas()
+        public Disciplina()
         {
-            this.Historicos = new HashSet<Historicos>();
-            this.Matriculas = new HashSet<Matriculas>();
-            this.Matrizes = new HashSet<Matrizes>();
-            this.Turmas = new HashSet<Turmas>();
+            this.Historico = new HashSet<Historico>();
+            this.Matricula = new HashSet<Matricula>();
+            this.Matriz = new HashSet<Matriz>();
+            this.Turma = new HashSet<Turma>();
         }
     
         public int id { get; set; }
@@ -31,12 +31,12 @@ namespace AcadControl.Models
         public Nullable<int> limite_faltas { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Historicos> Historicos { get; set; }
+        public virtual ICollection<Historico> Historico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matriculas> Matriculas { get; set; }
+        public virtual ICollection<Matricula> Matricula { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matrizes> Matrizes { get; set; }
+        public virtual ICollection<Matriz> Matriz { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Turmas> Turmas { get; set; }
+        public virtual ICollection<Turma> Turma { get; set; }
     }
 }

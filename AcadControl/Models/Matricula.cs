@@ -12,7 +12,7 @@ namespace AcadControl.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Matriculas
+    public partial class Matricula
     {
         public int ano { get; set; }
         public int semestre { get; set; }
@@ -25,8 +25,8 @@ namespace AcadControl.Models
         public Nullable<int> faltas_02 { get; set; }
         public Nullable<int> faltas_03 { get; set; }
     
-        public virtual Alunos Alunos { get; set; }
-        public virtual Disciplinas Disciplinas { get; set; }
-        public virtual Periodos_Letivos Periodos_Letivos { get; set; }
+        public virtual Aluno Aluno { get; set; }
+        public virtual Disciplina Disciplina { get; set; }
+        public virtual Periodo_Letivo Periodo_Letivo { get; set; }
     }
 }

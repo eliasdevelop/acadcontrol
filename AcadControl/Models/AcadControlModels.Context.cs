@@ -25,14 +25,14 @@ namespace AcadControl.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Alunos> Alunos { get; set; }
-        public virtual DbSet<Cursos> Cursos { get; set; }
-        public virtual DbSet<Disciplinas> Disciplinas { get; set; }
-        public virtual DbSet<Historicos> Historicos { get; set; }
-        public virtual DbSet<Matriculas> Matriculas { get; set; }
-        public virtual DbSet<Matrizes> Matrizes { get; set; }
-        public virtual DbSet<Periodos_Letivos> Periodos_Letivos { get; set; }
-        public virtual DbSet<Professores> Professores { get; set; }
-        public virtual DbSet<Turmas> Turmas { get; set; }
+        public virtual DbSet<Aluno> Aluno { get; set; }
+        public virtual DbSet<Curso> Curso { get; set; }
+        public virtual DbSet<Disciplina> Disciplina { get; set; }
+        public virtual DbSet<Historico> Historico { get; set; }
+        public virtual DbSet<Matricula> Matricula { get; set; }
+        public virtual DbSet<Matriz> Matriz { get; set; }
+        public virtual DbSet<Periodo_Letivo> Periodo_Letivo { get; set; }
+        public virtual DbSet<Professor> Professor { get; set; }
+        public virtual DbSet<Turma> Turma { get; set; }
     }
 }

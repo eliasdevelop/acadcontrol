@@ -12,14 +12,14 @@ namespace AcadControl.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Periodos_Letivos
+    public partial class Periodo_Letivo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Periodos_Letivos()
+        public Periodo_Letivo()
         {
-            this.Historicos = new HashSet<Historicos>();
-            this.Matriculas = new HashSet<Matriculas>();
-            this.Turmas = new HashSet<Turmas>();
+            this.Historico = new HashSet<Historico>();
+            this.Matricula = new HashSet<Matricula>();
+            this.Turma = new HashSet<Turma>();
         }
     
         public int ano { get; set; }
@@ -28,10 +28,10 @@ namespace AcadControl.Models
         public System.DateTime dat_fim { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Historicos> Historicos { get; set; }
+        public virtual ICollection<Historico> Historico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matriculas> Matriculas { get; set; }
+        public virtual ICollection<Matricula> Matricula { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Turmas> Turmas { get; set; }
+        public virtual ICollection<Turma> Turma { get; set; }
     }
 }

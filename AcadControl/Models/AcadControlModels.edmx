@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="AcadControlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Alunos">
+        <EntityType Name="Aluno">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -16,7 +16,7 @@
           <Property Name="mgp" Type="float" Nullable="false" />
           <Property Name="id_curso" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Cursos">
+        <EntityType Name="Curso">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -25,7 +25,7 @@
           <Property Name="tot_cred" Type="int" Nullable="false" />
           <Property Name="id_prof" Type="int" />
         </EntityType>
-        <EntityType Name="Disciplinas">
+        <EntityType Name="Disciplina">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -36,7 +36,7 @@
           <Property Name="horas_obrig" Type="int" />
           <Property Name="limite_faltas" Type="int" />
         </EntityType>
-        <EntityType Name="Historicos">
+        <EntityType Name="Historico">
           <Key>
             <PropertyRef Name="ano" />
             <PropertyRef Name="semestre" />
@@ -51,7 +51,7 @@
           <Property Name="media" Type="float" Nullable="false" />
           <Property Name="faltas" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Matriculas">
+        <EntityType Name="Matricula">
           <Key>
             <PropertyRef Name="ano" />
             <PropertyRef Name="semestre" />
@@ -69,7 +69,7 @@
           <Property Name="faltas_02" Type="int" />
           <Property Name="faltas_03" Type="int" />
         </EntityType>
-        <EntityType Name="Matrizes">
+        <EntityType Name="Matriz">
           <Key>
             <PropertyRef Name="id_disc" />
             <PropertyRef Name="id_curso" />
@@ -78,7 +78,7 @@
           <Property Name="id_curso" Type="int" Nullable="false" />
           <Property Name="periodo" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Periodos_Letivos">
+        <EntityType Name="Periodo_Letivo">
           <Key>
             <PropertyRef Name="ano" />
             <PropertyRef Name="semestre" />
@@ -88,7 +88,7 @@
           <Property Name="dat_ini" Type="date" Nullable="false" />
           <Property Name="dat_fim" Type="date" Nullable="false" />
         </EntityType>
-        <EntityType Name="Professores">
+        <EntityType Name="Professor">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -96,7 +96,7 @@
           <Property Name="mat_prof" Type="int" Nullable="false" />
           <Property Name="nom_prof" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Turmas">
+        <EntityType Name="Turma">
           <Key>
             <PropertyRef Name="ano" />
             <PropertyRef Name="semestre" />
@@ -109,228 +109,228 @@
           <Property Name="id_prof" Type="int" />
         </EntityType>
         <Association Name="FK_Alunos_Cursos">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
-          <End Role="Alunos" Type="Self.Alunos" Multiplicity="*" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Cursos">
+            <Principal Role="Curso">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Alunos">
+            <Dependent Role="Aluno">
               <PropertyRef Name="id_curso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cursos_Professores">
-          <End Role="Professores" Type="Self.Professores" Multiplicity="0..1" />
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Professores">
+            <Principal Role="Professor">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Cursos">
+            <Dependent Role="Curso">
               <PropertyRef Name="id_prof" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Historicos_Alunos">
-          <End Role="Alunos" Type="Self.Alunos" Multiplicity="1" />
-          <End Role="Historicos" Type="Self.Historicos" Multiplicity="*" />
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="1" />
+          <End Role="Historico" Type="Self.Historico" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Alunos">
+            <Principal Role="Aluno">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Historicos">
+            <Dependent Role="Historico">
               <PropertyRef Name="id_aluno" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Historicos_Disciplinas">
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
-          <End Role="Historicos" Type="Self.Historicos" Multiplicity="*" />
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="Historico" Type="Self.Historico" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Disciplinas">
+            <Principal Role="Disciplina">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Historicos">
+            <Dependent Role="Historico">
               <PropertyRef Name="id_disc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Historicos_Periodos_Letivos">
-          <End Role="Periodos_Letivos" Type="Self.Periodos_Letivos" Multiplicity="1" />
-          <End Role="Historicos" Type="Self.Historicos" Multiplicity="*" />
+          <End Role="Periodo_Letivo" Type="Self.Periodo_Letivo" Multiplicity="1" />
+          <End Role="Historico" Type="Self.Historico" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Periodos_Letivos">
+            <Principal Role="Periodo_Letivo">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Principal>
-            <Dependent Role="Historicos">
+            <Dependent Role="Historico">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matriculas_Alunos">
-          <End Role="Alunos" Type="Self.Alunos" Multiplicity="1" />
-          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Alunos">
+            <Principal Role="Aluno">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Matriculas">
+            <Dependent Role="Matricula">
               <PropertyRef Name="id_aluno" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matriculas_Disciplinas">
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
-          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Disciplinas">
+            <Principal Role="Disciplina">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Matriculas">
+            <Dependent Role="Matricula">
               <PropertyRef Name="id_disc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matriculas_Periodos_Letivos">
-          <End Role="Periodos_Letivos" Type="Self.Periodos_Letivos" Multiplicity="1" />
-          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <End Role="Periodo_Letivo" Type="Self.Periodo_Letivo" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Periodos_Letivos">
+            <Principal Role="Periodo_Letivo">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Principal>
-            <Dependent Role="Matriculas">
+            <Dependent Role="Matricula">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matrizes_Cursos">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
-          <End Role="Matrizes" Type="Self.Matrizes" Multiplicity="*" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Matriz" Type="Self.Matriz" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Cursos">
+            <Principal Role="Curso">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Matrizes">
+            <Dependent Role="Matriz">
               <PropertyRef Name="id_curso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matrizes_Disciplinas">
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
-          <End Role="Matrizes" Type="Self.Matrizes" Multiplicity="*" />
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="Matriz" Type="Self.Matriz" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Disciplinas">
+            <Principal Role="Disciplina">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Matrizes">
+            <Dependent Role="Matriz">
               <PropertyRef Name="id_disc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Turmas_Disciplinas">
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
-          <End Role="Turmas" Type="Self.Turmas" Multiplicity="*" />
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="Turma" Type="Self.Turma" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Disciplinas">
+            <Principal Role="Disciplina">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Turmas">
+            <Dependent Role="Turma">
               <PropertyRef Name="id_disc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Turmas_Periodos_Letivos">
-          <End Role="Periodos_Letivos" Type="Self.Periodos_Letivos" Multiplicity="1" />
-          <End Role="Turmas" Type="Self.Turmas" Multiplicity="*" />
+          <End Role="Periodo_Letivo" Type="Self.Periodo_Letivo" Multiplicity="1" />
+          <End Role="Turma" Type="Self.Turma" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Periodos_Letivos">
+            <Principal Role="Periodo_Letivo">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Principal>
-            <Dependent Role="Turmas">
+            <Dependent Role="Turma">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Turmas_Professores">
-          <End Role="Professores" Type="Self.Professores" Multiplicity="0..1" />
-          <End Role="Turmas" Type="Self.Turmas" Multiplicity="*" />
+          <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+          <End Role="Turma" Type="Self.Turma" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Professores">
+            <Principal Role="Professor">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Turmas">
+            <Dependent Role="Turma">
               <PropertyRef Name="id_prof" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="AcadControlModelStoreContainer">
-          <EntitySet Name="Alunos" EntityType="Self.Alunos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Historicos" EntityType="Self.Historicos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Matriculas" EntityType="Self.Matriculas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Matrizes" EntityType="Self.Matrizes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Periodos_Letivos" EntityType="Self.Periodos_Letivos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Professores" EntityType="Self.Professores" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Turmas" EntityType="Self.Turmas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aluno" EntityType="Self.Aluno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disciplina" EntityType="Self.Disciplina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Historico" EntityType="Self.Historico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Matricula" EntityType="Self.Matricula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Matriz" EntityType="Self.Matriz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Periodo_Letivo" EntityType="Self.Periodo_Letivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Professor" EntityType="Self.Professor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turma" EntityType="Self.Turma" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Alunos_Cursos" Association="Self.FK_Alunos_Cursos">
-            <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="Alunos" EntitySet="Alunos" />
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Aluno" EntitySet="Aluno" />
           </AssociationSet>
           <AssociationSet Name="FK_Cursos_Professores" Association="Self.FK_Cursos_Professores">
-            <End Role="Professores" EntitySet="Professores" />
-            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Professor" EntitySet="Professor" />
+            <End Role="Curso" EntitySet="Curso" />
           </AssociationSet>
           <AssociationSet Name="FK_Historicos_Alunos" Association="Self.FK_Historicos_Alunos">
-            <End Role="Alunos" EntitySet="Alunos" />
-            <End Role="Historicos" EntitySet="Historicos" />
+            <End Role="Aluno" EntitySet="Aluno" />
+            <End Role="Historico" EntitySet="Historico" />
           </AssociationSet>
           <AssociationSet Name="FK_Historicos_Disciplinas" Association="Self.FK_Historicos_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-            <End Role="Historicos" EntitySet="Historicos" />
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Historico" EntitySet="Historico" />
           </AssociationSet>
           <AssociationSet Name="FK_Historicos_Periodos_Letivos" Association="Self.FK_Historicos_Periodos_Letivos">
-            <End Role="Periodos_Letivos" EntitySet="Periodos_Letivos" />
-            <End Role="Historicos" EntitySet="Historicos" />
+            <End Role="Periodo_Letivo" EntitySet="Periodo_Letivo" />
+            <End Role="Historico" EntitySet="Historico" />
           </AssociationSet>
           <AssociationSet Name="FK_Matriculas_Alunos" Association="Self.FK_Matriculas_Alunos">
-            <End Role="Alunos" EntitySet="Alunos" />
-            <End Role="Matriculas" EntitySet="Matriculas" />
+            <End Role="Aluno" EntitySet="Aluno" />
+            <End Role="Matricula" EntitySet="Matricula" />
           </AssociationSet>
           <AssociationSet Name="FK_Matriculas_Disciplinas" Association="Self.FK_Matriculas_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-            <End Role="Matriculas" EntitySet="Matriculas" />
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Matricula" EntitySet="Matricula" />
           </AssociationSet>
           <AssociationSet Name="FK_Matriculas_Periodos_Letivos" Association="Self.FK_Matriculas_Periodos_Letivos">
-            <End Role="Periodos_Letivos" EntitySet="Periodos_Letivos" />
-            <End Role="Matriculas" EntitySet="Matriculas" />
+            <End Role="Periodo_Letivo" EntitySet="Periodo_Letivo" />
+            <End Role="Matricula" EntitySet="Matricula" />
           </AssociationSet>
           <AssociationSet Name="FK_Matrizes_Cursos" Association="Self.FK_Matrizes_Cursos">
-            <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="Matrizes" EntitySet="Matrizes" />
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Matriz" EntitySet="Matriz" />
           </AssociationSet>
           <AssociationSet Name="FK_Matrizes_Disciplinas" Association="Self.FK_Matrizes_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-            <End Role="Matrizes" EntitySet="Matrizes" />
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Matriz" EntitySet="Matriz" />
           </AssociationSet>
           <AssociationSet Name="FK_Turmas_Disciplinas" Association="Self.FK_Turmas_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-            <End Role="Turmas" EntitySet="Turmas" />
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Turma" EntitySet="Turma" />
           </AssociationSet>
           <AssociationSet Name="FK_Turmas_Periodos_Letivos" Association="Self.FK_Turmas_Periodos_Letivos">
-            <End Role="Periodos_Letivos" EntitySet="Periodos_Letivos" />
-            <End Role="Turmas" EntitySet="Turmas" />
+            <End Role="Periodo_Letivo" EntitySet="Periodo_Letivo" />
+            <End Role="Turma" EntitySet="Turma" />
           </AssociationSet>
           <AssociationSet Name="FK_Turmas_Professores" Association="Self.FK_Turmas_Professores">
-            <End Role="Professores" EntitySet="Professores" />
-            <End Role="Turmas" EntitySet="Turmas" />
+            <End Role="Professor" EntitySet="Professor" />
+            <End Role="Turma" EntitySet="Turma" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -338,7 +338,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AcadControlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Alunos">
+        <EntityType Name="Aluno">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -348,11 +348,11 @@
           <Property Name="dat_nasc" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="mgp" Type="Double" Nullable="false" />
           <Property Name="id_curso" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cursos" Relationship="Self.FK_Alunos_Cursos" FromRole="Alunos" ToRole="Cursos" />
-          <NavigationProperty Name="Historicos" Relationship="Self.FK_Historicos_Alunos" FromRole="Alunos" ToRole="Historicos" />
-          <NavigationProperty Name="Matriculas" Relationship="Self.FK_Matriculas_Alunos" FromRole="Alunos" ToRole="Matriculas" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_Alunos_Cursos" FromRole="Aluno" ToRole="Curso" />
+          <NavigationProperty Name="Historico" Relationship="Self.FK_Historicos_Alunos" FromRole="Aluno" ToRole="Historico" />
+          <NavigationProperty Name="Matricula" Relationship="Self.FK_Matriculas_Alunos" FromRole="Aluno" ToRole="Matricula" />
         </EntityType>
-        <EntityType Name="Cursos">
+        <EntityType Name="Curso">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -360,11 +360,11 @@
           <Property Name="nom_curso" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tot_cred" Type="Int32" Nullable="false" />
           <Property Name="id_prof" Type="Int32" />
-          <NavigationProperty Name="Alunos" Relationship="Self.FK_Alunos_Cursos" FromRole="Cursos" ToRole="Alunos" />
-          <NavigationProperty Name="Professores" Relationship="Self.FK_Cursos_Professores" FromRole="Cursos" ToRole="Professores" />
-          <NavigationProperty Name="Matrizes" Relationship="Self.FK_Matrizes_Cursos" FromRole="Cursos" ToRole="Matrizes" />
+          <NavigationProperty Name="Aluno" Relationship="Self.FK_Alunos_Cursos" FromRole="Curso" ToRole="Aluno" />
+          <NavigationProperty Name="Professor" Relationship="Self.FK_Cursos_Professores" FromRole="Curso" ToRole="Professor" />
+          <NavigationProperty Name="Matriz" Relationship="Self.FK_Matrizes_Cursos" FromRole="Curso" ToRole="Matriz" />
         </EntityType>
-        <EntityType Name="Disciplinas">
+        <EntityType Name="Disciplina">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -374,12 +374,12 @@
           <Property Name="tpo_disc" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="horas_obrig" Type="Int32" />
           <Property Name="limite_faltas" Type="Int32" />
-          <NavigationProperty Name="Historicos" Relationship="Self.FK_Historicos_Disciplinas" FromRole="Disciplinas" ToRole="Historicos" />
-          <NavigationProperty Name="Matriculas" Relationship="Self.FK_Matriculas_Disciplinas" FromRole="Disciplinas" ToRole="Matriculas" />
-          <NavigationProperty Name="Matrizes" Relationship="Self.FK_Matrizes_Disciplinas" FromRole="Disciplinas" ToRole="Matrizes" />
-          <NavigationProperty Name="Turmas" Relationship="Self.FK_Turmas_Disciplinas" FromRole="Disciplinas" ToRole="Turmas" />
+          <NavigationProperty Name="Historico" Relationship="Self.FK_Historicos_Disciplinas" FromRole="Disciplina" ToRole="Historico" />
+          <NavigationProperty Name="Matricula" Relationship="Self.FK_Matriculas_Disciplinas" FromRole="Disciplina" ToRole="Matricula" />
+          <NavigationProperty Name="Matriz" Relationship="Self.FK_Matrizes_Disciplinas" FromRole="Disciplina" ToRole="Matriz" />
+          <NavigationProperty Name="Turma" Relationship="Self.FK_Turmas_Disciplinas" FromRole="Disciplina" ToRole="Turma" />
         </EntityType>
-        <EntityType Name="Historicos">
+        <EntityType Name="Historico">
           <Key>
             <PropertyRef Name="ano" />
             <PropertyRef Name="semestre" />
@@ -393,11 +393,11 @@
           <Property Name="situacao" Type="Boolean" Nullable="false" />
           <Property Name="media" Type="Double" Nullable="false" />
           <Property Name="faltas" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Alunos" Relationship="Self.FK_Historicos_Alunos" FromRole="Historicos" ToRole="Alunos" />
-          <NavigationProperty Name="Disciplinas" Relationship="Self.FK_Historicos_Disciplinas" FromRole="Historicos" ToRole="Disciplinas" />
-          <NavigationProperty Name="Periodos_Letivos" Relationship="Self.FK_Historicos_Periodos_Letivos" FromRole="Historicos" ToRole="Periodos_Letivos" />
+          <NavigationProperty Name="Aluno" Relationship="Self.FK_Historicos_Alunos" FromRole="Historico" ToRole="Aluno" />
+          <NavigationProperty Name="Disciplina" Relationship="Self.FK_Historicos_Disciplinas" FromRole="Historico" ToRole="Disciplina" />
+          <NavigationProperty Name="Periodo_Letivo" Relationship="Self.FK_Historicos_Periodos_Letivos" FromRole="Historico" ToRole="Periodo_Letivo" />
         </EntityType>
-        <EntityType Name="Matriculas">
+        <EntityType Name="Matricula">
           <Key>
             <PropertyRef Name="ano" />
             <PropertyRef Name="semestre" />
@@ -414,11 +414,11 @@
           <Property Name="faltas_01" Type="Int32" />
           <Property Name="faltas_02" Type="Int32" />
           <Property Name="faltas_03" Type="Int32" />
-          <NavigationProperty Name="Alunos" Relationship="Self.FK_Matriculas_Alunos" FromRole="Matriculas" ToRole="Alunos" />
-          <NavigationProperty Name="Disciplinas" Relationship="Self.FK_Matriculas_Disciplinas" FromRole="Matriculas" ToRole="Disciplinas" />
-          <NavigationProperty Name="Periodos_Letivos" Relationship="Self.FK_Matriculas_Periodos_Letivos" FromRole="Matriculas" ToRole="Periodos_Letivos" />
+          <NavigationProperty Name="Aluno" Relationship="Self.FK_Matriculas_Alunos" FromRole="Matricula" ToRole="Aluno" />
+          <NavigationProperty Name="Disciplina" Relationship="Self.FK_Matriculas_Disciplinas" FromRole="Matricula" ToRole="Disciplina" />
+          <NavigationProperty Name="Periodo_Letivo" Relationship="Self.FK_Matriculas_Periodos_Letivos" FromRole="Matricula" ToRole="Periodo_Letivo" />
         </EntityType>
-        <EntityType Name="Matrizes">
+        <EntityType Name="Matriz">
           <Key>
             <PropertyRef Name="id_disc" />
             <PropertyRef Name="id_curso" />
@@ -426,10 +426,10 @@
           <Property Name="id_disc" Type="Int32" Nullable="false" />
           <Property Name="id_curso" Type="Int32" Nullable="false" />
           <Property Name="periodo" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cursos" Relationship="Self.FK_Matrizes_Cursos" FromRole="Matrizes" ToRole="Cursos" />
-          <NavigationProperty Name="Disciplinas" Relationship="Self.FK_Matrizes_Disciplinas" FromRole="Matrizes" ToRole="Disciplinas" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_Matrizes_Cursos" FromRole="Matriz" ToRole="Curso" />
+          <NavigationProperty Name="Disciplina" Relationship="Self.FK_Matrizes_Disciplinas" FromRole="Matriz" ToRole="Disciplina" />
         </EntityType>
-        <EntityType Name="Periodos_Letivos">
+        <EntityType Name="Periodo_Letivo">
           <Key>
             <PropertyRef Name="ano" />
             <PropertyRef Name="semestre" />
@@ -438,21 +438,21 @@
           <Property Name="semestre" Type="Int32" Nullable="false" />
           <Property Name="dat_ini" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="dat_fim" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Historicos" Relationship="Self.FK_Historicos_Periodos_Letivos" FromRole="Periodos_Letivos" ToRole="Historicos" />
-          <NavigationProperty Name="Matriculas" Relationship="Self.FK_Matriculas_Periodos_Letivos" FromRole="Periodos_Letivos" ToRole="Matriculas" />
-          <NavigationProperty Name="Turmas" Relationship="Self.FK_Turmas_Periodos_Letivos" FromRole="Periodos_Letivos" ToRole="Turmas" />
+          <NavigationProperty Name="Historico" Relationship="Self.FK_Historicos_Periodos_Letivos" FromRole="Periodo_Letivo" ToRole="Historico" />
+          <NavigationProperty Name="Matricula" Relationship="Self.FK_Matriculas_Periodos_Letivos" FromRole="Periodo_Letivo" ToRole="Matricula" />
+          <NavigationProperty Name="Turma" Relationship="Self.FK_Turmas_Periodos_Letivos" FromRole="Periodo_Letivo" ToRole="Turma" />
         </EntityType>
-        <EntityType Name="Professores">
+        <EntityType Name="Professor">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="mat_prof" Type="Int32" Nullable="false" />
           <Property Name="nom_prof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Cursos" Relationship="Self.FK_Cursos_Professores" FromRole="Professores" ToRole="Cursos" />
-          <NavigationProperty Name="Turmas" Relationship="Self.FK_Turmas_Professores" FromRole="Professores" ToRole="Turmas" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_Cursos_Professores" FromRole="Professor" ToRole="Curso" />
+          <NavigationProperty Name="Turma" Relationship="Self.FK_Turmas_Professores" FromRole="Professor" ToRole="Turma" />
         </EntityType>
-        <EntityType Name="Turmas">
+        <EntityType Name="Turma">
           <Key>
             <PropertyRef Name="ano" />
             <PropertyRef Name="semestre" />
@@ -463,233 +463,233 @@
           <Property Name="id_disc" Type="Int32" Nullable="false" />
           <Property Name="vagas" Type="Int32" Nullable="false" />
           <Property Name="id_prof" Type="Int32" />
-          <NavigationProperty Name="Disciplinas" Relationship="Self.FK_Turmas_Disciplinas" FromRole="Turmas" ToRole="Disciplinas" />
-          <NavigationProperty Name="Periodos_Letivos" Relationship="Self.FK_Turmas_Periodos_Letivos" FromRole="Turmas" ToRole="Periodos_Letivos" />
-          <NavigationProperty Name="Professores" Relationship="Self.FK_Turmas_Professores" FromRole="Turmas" ToRole="Professores" />
+          <NavigationProperty Name="Disciplina" Relationship="Self.FK_Turmas_Disciplinas" FromRole="Turma" ToRole="Disciplina" />
+          <NavigationProperty Name="Periodo_Letivo" Relationship="Self.FK_Turmas_Periodos_Letivos" FromRole="Turma" ToRole="Periodo_Letivo" />
+          <NavigationProperty Name="Professor" Relationship="Self.FK_Turmas_Professores" FromRole="Turma" ToRole="Professor" />
         </EntityType>
         <Association Name="FK_Alunos_Cursos">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
-          <End Role="Alunos" Type="Self.Alunos" Multiplicity="*" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Cursos">
+            <Principal Role="Curso">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Alunos">
+            <Dependent Role="Aluno">
               <PropertyRef Name="id_curso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Historicos_Alunos">
-          <End Role="Alunos" Type="Self.Alunos" Multiplicity="1" />
-          <End Role="Historicos" Type="Self.Historicos" Multiplicity="*" />
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="1" />
+          <End Role="Historico" Type="Self.Historico" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Alunos">
+            <Principal Role="Aluno">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Historicos">
+            <Dependent Role="Historico">
               <PropertyRef Name="id_aluno" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matriculas_Alunos">
-          <End Role="Alunos" Type="Self.Alunos" Multiplicity="1" />
-          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Alunos">
+            <Principal Role="Aluno">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Matriculas">
+            <Dependent Role="Matricula">
               <PropertyRef Name="id_aluno" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cursos_Professores">
-          <End Role="Professores" Type="Self.Professores" Multiplicity="0..1" />
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Professores">
+            <Principal Role="Professor">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Cursos">
+            <Dependent Role="Curso">
               <PropertyRef Name="id_prof" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matrizes_Cursos">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
-          <End Role="Matrizes" Type="Self.Matrizes" Multiplicity="*" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Matriz" Type="Self.Matriz" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Cursos">
+            <Principal Role="Curso">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Matrizes">
+            <Dependent Role="Matriz">
               <PropertyRef Name="id_curso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Historicos_Disciplinas">
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
-          <End Role="Historicos" Type="Self.Historicos" Multiplicity="*" />
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="Historico" Type="Self.Historico" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Disciplinas">
+            <Principal Role="Disciplina">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Historicos">
+            <Dependent Role="Historico">
               <PropertyRef Name="id_disc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matriculas_Disciplinas">
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
-          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Disciplinas">
+            <Principal Role="Disciplina">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Matriculas">
+            <Dependent Role="Matricula">
               <PropertyRef Name="id_disc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matrizes_Disciplinas">
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
-          <End Role="Matrizes" Type="Self.Matrizes" Multiplicity="*" />
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="Matriz" Type="Self.Matriz" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Disciplinas">
+            <Principal Role="Disciplina">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Matrizes">
+            <Dependent Role="Matriz">
               <PropertyRef Name="id_disc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Turmas_Disciplinas">
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
-          <End Role="Turmas" Type="Self.Turmas" Multiplicity="*" />
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="Turma" Type="Self.Turma" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Disciplinas">
+            <Principal Role="Disciplina">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Turmas">
+            <Dependent Role="Turma">
               <PropertyRef Name="id_disc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Historicos_Periodos_Letivos">
-          <End Role="Periodos_Letivos" Type="Self.Periodos_Letivos" Multiplicity="1" />
-          <End Role="Historicos" Type="Self.Historicos" Multiplicity="*" />
+          <End Role="Periodo_Letivo" Type="Self.Periodo_Letivo" Multiplicity="1" />
+          <End Role="Historico" Type="Self.Historico" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Periodos_Letivos">
+            <Principal Role="Periodo_Letivo">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Principal>
-            <Dependent Role="Historicos">
+            <Dependent Role="Historico">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Matriculas_Periodos_Letivos">
-          <End Role="Periodos_Letivos" Type="Self.Periodos_Letivos" Multiplicity="1" />
-          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <End Role="Periodo_Letivo" Type="Self.Periodo_Letivo" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Periodos_Letivos">
+            <Principal Role="Periodo_Letivo">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Principal>
-            <Dependent Role="Matriculas">
+            <Dependent Role="Matricula">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Turmas_Periodos_Letivos">
-          <End Role="Periodos_Letivos" Type="Self.Periodos_Letivos" Multiplicity="1" />
-          <End Role="Turmas" Type="Self.Turmas" Multiplicity="*" />
+          <End Role="Periodo_Letivo" Type="Self.Periodo_Letivo" Multiplicity="1" />
+          <End Role="Turma" Type="Self.Turma" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Periodos_Letivos">
+            <Principal Role="Periodo_Letivo">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Principal>
-            <Dependent Role="Turmas">
+            <Dependent Role="Turma">
               <PropertyRef Name="ano" />
               <PropertyRef Name="semestre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Turmas_Professores">
-          <End Role="Professores" Type="Self.Professores" Multiplicity="0..1" />
-          <End Role="Turmas" Type="Self.Turmas" Multiplicity="*" />
+          <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+          <End Role="Turma" Type="Self.Turma" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Professores">
+            <Principal Role="Professor">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Turmas">
+            <Dependent Role="Turma">
               <PropertyRef Name="id_prof" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Alunos" EntityType="Self.Alunos" />
-          <EntitySet Name="Cursos" EntityType="Self.Cursos" />
-          <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" />
-          <EntitySet Name="Historicos" EntityType="Self.Historicos" />
-          <EntitySet Name="Matriculas" EntityType="Self.Matriculas" />
-          <EntitySet Name="Matrizes" EntityType="Self.Matrizes" />
-          <EntitySet Name="Periodos_Letivos" EntityType="Self.Periodos_Letivos" />
-          <EntitySet Name="Professores" EntityType="Self.Professores" />
-          <EntitySet Name="Turmas" EntityType="Self.Turmas" />
+          <EntitySet Name="Aluno" EntityType="Self.Aluno" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" />
+          <EntitySet Name="Disciplina" EntityType="Self.Disciplina" />
+          <EntitySet Name="Historico" EntityType="Self.Historico" />
+          <EntitySet Name="Matricula" EntityType="Self.Matricula" />
+          <EntitySet Name="Matriz" EntityType="Self.Matriz" />
+          <EntitySet Name="Periodo_Letivo" EntityType="Self.Periodo_Letivo" />
+          <EntitySet Name="Professor" EntityType="Self.Professor" />
+          <EntitySet Name="Turma" EntityType="Self.Turma" />
           <AssociationSet Name="FK_Alunos_Cursos" Association="Self.FK_Alunos_Cursos">
-            <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="Alunos" EntitySet="Alunos" />
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Aluno" EntitySet="Aluno" />
           </AssociationSet>
           <AssociationSet Name="FK_Historicos_Alunos" Association="Self.FK_Historicos_Alunos">
-            <End Role="Alunos" EntitySet="Alunos" />
-            <End Role="Historicos" EntitySet="Historicos" />
+            <End Role="Aluno" EntitySet="Aluno" />
+            <End Role="Historico" EntitySet="Historico" />
           </AssociationSet>
           <AssociationSet Name="FK_Matriculas_Alunos" Association="Self.FK_Matriculas_Alunos">
-            <End Role="Alunos" EntitySet="Alunos" />
-            <End Role="Matriculas" EntitySet="Matriculas" />
+            <End Role="Aluno" EntitySet="Aluno" />
+            <End Role="Matricula" EntitySet="Matricula" />
           </AssociationSet>
           <AssociationSet Name="FK_Cursos_Professores" Association="Self.FK_Cursos_Professores">
-            <End Role="Professores" EntitySet="Professores" />
-            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Professor" EntitySet="Professor" />
+            <End Role="Curso" EntitySet="Curso" />
           </AssociationSet>
           <AssociationSet Name="FK_Matrizes_Cursos" Association="Self.FK_Matrizes_Cursos">
-            <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="Matrizes" EntitySet="Matrizes" />
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Matriz" EntitySet="Matriz" />
           </AssociationSet>
           <AssociationSet Name="FK_Historicos_Disciplinas" Association="Self.FK_Historicos_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-            <End Role="Historicos" EntitySet="Historicos" />
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Historico" EntitySet="Historico" />
           </AssociationSet>
           <AssociationSet Name="FK_Matriculas_Disciplinas" Association="Self.FK_Matriculas_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-            <End Role="Matriculas" EntitySet="Matriculas" />
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Matricula" EntitySet="Matricula" />
           </AssociationSet>
           <AssociationSet Name="FK_Matrizes_Disciplinas" Association="Self.FK_Matrizes_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-            <End Role="Matrizes" EntitySet="Matrizes" />
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Matriz" EntitySet="Matriz" />
           </AssociationSet>
           <AssociationSet Name="FK_Turmas_Disciplinas" Association="Self.FK_Turmas_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-            <End Role="Turmas" EntitySet="Turmas" />
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Turma" EntitySet="Turma" />
           </AssociationSet>
           <AssociationSet Name="FK_Historicos_Periodos_Letivos" Association="Self.FK_Historicos_Periodos_Letivos">
-            <End Role="Periodos_Letivos" EntitySet="Periodos_Letivos" />
-            <End Role="Historicos" EntitySet="Historicos" />
+            <End Role="Periodo_Letivo" EntitySet="Periodo_Letivo" />
+            <End Role="Historico" EntitySet="Historico" />
           </AssociationSet>
           <AssociationSet Name="FK_Matriculas_Periodos_Letivos" Association="Self.FK_Matriculas_Periodos_Letivos">
-            <End Role="Periodos_Letivos" EntitySet="Periodos_Letivos" />
-            <End Role="Matriculas" EntitySet="Matriculas" />
+            <End Role="Periodo_Letivo" EntitySet="Periodo_Letivo" />
+            <End Role="Matricula" EntitySet="Matricula" />
           </AssociationSet>
           <AssociationSet Name="FK_Turmas_Periodos_Letivos" Association="Self.FK_Turmas_Periodos_Letivos">
-            <End Role="Periodos_Letivos" EntitySet="Periodos_Letivos" />
-            <End Role="Turmas" EntitySet="Turmas" />
+            <End Role="Periodo_Letivo" EntitySet="Periodo_Letivo" />
+            <End Role="Turma" EntitySet="Turma" />
           </AssociationSet>
           <AssociationSet Name="FK_Turmas_Professores" Association="Self.FK_Turmas_Professores">
-            <End Role="Professores" EntitySet="Professores" />
-            <End Role="Turmas" EntitySet="Turmas" />
+            <End Role="Professor" EntitySet="Professor" />
+            <End Role="Turma" EntitySet="Turma" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -698,9 +698,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AcadControlModelStoreContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="Alunos">
-            <EntityTypeMapping TypeName="AcadControlModel.Alunos">
-              <MappingFragment StoreEntitySet="Alunos">
+          <EntitySetMapping Name="Aluno">
+            <EntityTypeMapping TypeName="AcadControlModel.Aluno">
+              <MappingFragment StoreEntitySet="Aluno">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nom_alu" ColumnName="nom_alu" />
                 <ScalarProperty Name="tot_cred" ColumnName="tot_cred" />
@@ -710,9 +710,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Cursos">
-            <EntityTypeMapping TypeName="AcadControlModel.Cursos">
-              <MappingFragment StoreEntitySet="Cursos">
+          <EntitySetMapping Name="Curso">
+            <EntityTypeMapping TypeName="AcadControlModel.Curso">
+              <MappingFragment StoreEntitySet="Curso">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nom_curso" ColumnName="nom_curso" />
                 <ScalarProperty Name="tot_cred" ColumnName="tot_cred" />
@@ -720,9 +720,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Disciplinas">
-            <EntityTypeMapping TypeName="AcadControlModel.Disciplinas">
-              <MappingFragment StoreEntitySet="Disciplinas">
+          <EntitySetMapping Name="Disciplina">
+            <EntityTypeMapping TypeName="AcadControlModel.Disciplina">
+              <MappingFragment StoreEntitySet="Disciplina">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nom_disc" ColumnName="nom_disc" />
                 <ScalarProperty Name="creditos" ColumnName="creditos" />
@@ -732,9 +732,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Historicos">
-            <EntityTypeMapping TypeName="AcadControlModel.Historicos">
-              <MappingFragment StoreEntitySet="Historicos">
+          <EntitySetMapping Name="Historico">
+            <EntityTypeMapping TypeName="AcadControlModel.Historico">
+              <MappingFragment StoreEntitySet="Historico">
                 <ScalarProperty Name="ano" ColumnName="ano" />
                 <ScalarProperty Name="semestre" ColumnName="semestre" />
                 <ScalarProperty Name="id_aluno" ColumnName="id_aluno" />
@@ -745,9 +745,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Matriculas">
-            <EntityTypeMapping TypeName="AcadControlModel.Matriculas">
-              <MappingFragment StoreEntitySet="Matriculas">
+          <EntitySetMapping Name="Matricula">
+            <EntityTypeMapping TypeName="AcadControlModel.Matricula">
+              <MappingFragment StoreEntitySet="Matricula">
                 <ScalarProperty Name="ano" ColumnName="ano" />
                 <ScalarProperty Name="semestre" ColumnName="semestre" />
                 <ScalarProperty Name="id_aluno" ColumnName="id_aluno" />
@@ -761,18 +761,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Matrizes">
-            <EntityTypeMapping TypeName="AcadControlModel.Matrizes">
-              <MappingFragment StoreEntitySet="Matrizes">
+          <EntitySetMapping Name="Matriz">
+            <EntityTypeMapping TypeName="AcadControlModel.Matriz">
+              <MappingFragment StoreEntitySet="Matriz">
                 <ScalarProperty Name="id_disc" ColumnName="id_disc" />
                 <ScalarProperty Name="id_curso" ColumnName="id_curso" />
                 <ScalarProperty Name="periodo" ColumnName="periodo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Periodos_Letivos">
-            <EntityTypeMapping TypeName="AcadControlModel.Periodos_Letivos">
-              <MappingFragment StoreEntitySet="Periodos_Letivos">
+          <EntitySetMapping Name="Periodo_Letivo">
+            <EntityTypeMapping TypeName="AcadControlModel.Periodo_Letivo">
+              <MappingFragment StoreEntitySet="Periodo_Letivo">
                 <ScalarProperty Name="ano" ColumnName="ano" />
                 <ScalarProperty Name="semestre" ColumnName="semestre" />
                 <ScalarProperty Name="dat_ini" ColumnName="dat_ini" />
@@ -780,18 +780,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Professores">
-            <EntityTypeMapping TypeName="AcadControlModel.Professores">
-              <MappingFragment StoreEntitySet="Professores">
+          <EntitySetMapping Name="Professor">
+            <EntityTypeMapping TypeName="AcadControlModel.Professor">
+              <MappingFragment StoreEntitySet="Professor">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="mat_prof" ColumnName="mat_prof" />
                 <ScalarProperty Name="nom_prof" ColumnName="nom_prof" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Turmas">
-            <EntityTypeMapping TypeName="AcadControlModel.Turmas">
-              <MappingFragment StoreEntitySet="Turmas">
+          <EntitySetMapping Name="Turma">
+            <EntityTypeMapping TypeName="AcadControlModel.Turma">
+              <MappingFragment StoreEntitySet="Turma">
                 <ScalarProperty Name="ano" ColumnName="ano" />
                 <ScalarProperty Name="semestre" ColumnName="semestre" />
                 <ScalarProperty Name="id_disc" ColumnName="id_disc" />

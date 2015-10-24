@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="798d9f1af019408daeb7ec15ed51de1d" Name="Diagram1">
-        <EntityTypeShape EntityType="AcadControlModel.Alunos" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AcadControlModel.Cursos" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AcadControlModel.Disciplinas" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AcadControlModel.Historicos" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AcadControlModel.Matriculas" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="AcadControlModel.Matrizes" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AcadControlModel.Periodos_Letivos" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AcadControlModel.Professores" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AcadControlModel.Turmas" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+      <Diagram DiagramId="3ef1a043a66e4ade89cc71b07b42d1ab" Name="Diagram1">
+        <EntityTypeShape EntityType="AcadControlModel.Aluno" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcadControlModel.Curso" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcadControlModel.Disciplina" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcadControlModel.Historico" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcadControlModel.Matricula" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcadControlModel.Matriz" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcadControlModel.Periodo_Letivo" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcadControlModel.Professor" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AcadControlModel.Turma" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
         <AssociationConnector Association="AcadControlModel.FK_Alunos_Cursos" ManuallyRouted="false" />
         <AssociationConnector Association="AcadControlModel.FK_Historicos_Alunos" ManuallyRouted="false" />
         <AssociationConnector Association="AcadControlModel.FK_Matriculas_Alunos" ManuallyRouted="false" />

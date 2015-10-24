@@ -12,18 +12,13 @@ namespace AcadControl.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Historicos
+    public partial class Matriz
     {
-        public int ano { get; set; }
-        public int semestre { get; set; }
-        public int id_aluno { get; set; }
         public int id_disc { get; set; }
-        public bool situacao { get; set; }
-        public double media { get; set; }
-        public int faltas { get; set; }
+        public int id_curso { get; set; }
+        public int periodo { get; set; }
     
-        public virtual Alunos Alunos { get; set; }
-        public virtual Disciplinas Disciplinas { get; set; }
-        public virtual Periodos_Letivos Periodos_Letivos { get; set; }
+        public virtual Curso Curso { get; set; }
+        public virtual Disciplina Disciplina { get; set; }
     }
 }

@@ -12,24 +12,22 @@ namespace AcadControl.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cursos
+    public partial class Professor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cursos()
+        public Professor()
         {
-            this.Alunos = new HashSet<Alunos>();
-            this.Matrizes = new HashSet<Matrizes>();
+            this.Curso = new HashSet<Curso>();
+            this.Turma = new HashSet<Turma>();
         }
     
         public int id { get; set; }
-        public string nom_curso { get; set; }
-        public int tot_cred { get; set; }
-        public Nullable<int> id_prof { get; set; }
+        public int mat_prof { get; set; }
+        public string nom_prof { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Alunos> Alunos { get; set; }
-        public virtual Professores Professores { get; set; }
+        public virtual ICollection<Curso> Curso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matrizes> Matrizes { get; set; }
+        public virtual ICollection<Turma> Turma { get; set; }
     }
 }

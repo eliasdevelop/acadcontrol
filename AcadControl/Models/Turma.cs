@@ -12,7 +12,7 @@ namespace AcadControl.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Turmas
+    public partial class Turma
     {
         public int ano { get; set; }
         public int semestre { get; set; }
@@ -20,8 +20,8 @@ namespace AcadControl.Models
         public int vagas { get; set; }
         public Nullable<int> id_prof { get; set; }
     
-        public virtual Disciplinas Disciplinas { get; set; }
-        public virtual Periodos_Letivos Periodos_Letivos { get; set; }
-        public virtual Professores Professores { get; set; }
+        public virtual Disciplina Disciplina { get; set; }
+        public virtual Periodo_Letivo Periodo_Letivo { get; set; }
+        public virtual Professor Professor { get; set; }
     }
 }
