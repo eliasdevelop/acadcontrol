@@ -13,6 +13,24 @@ namespace AcadControl.Views.Professor {
     public partial class Index {
         
         /// <summary>
+        /// nome_prof control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox nome_prof;
+        
+        /// <summary>
+        /// mat_alu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox mat_alu;
+        
+        /// <summary>
         /// ProfessoresList control.
         /// </summary>
         /// <remarks>

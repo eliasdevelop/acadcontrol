@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Professor</h3>

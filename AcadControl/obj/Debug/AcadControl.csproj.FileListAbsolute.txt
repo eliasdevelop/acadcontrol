@@ -22,3 +22,6 @@
 \\Mac\Home\Documents\Development\Projects\acadcontrol\AcadControl\obj\Debug\AcadControl.csprojResolveAssemblyReference.cache
 \\Mac\Home\Documents\Development\Projects\acadcontrol\AcadControl\obj\Debug\AcadControl.dll
 \\Mac\Home\Documents\Development\Projects\acadcontrol\AcadControl\obj\Debug\AcadControl.pdb
+\\Mac\Home\Documents\Development\Projects\acadcontrol\AcadControl\bin\Microsoft.ReportViewer.Common.dll
+\\Mac\Home\Documents\Development\Projects\acadcontrol\AcadControl\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+\\Mac\Home\Documents\Development\Projects\acadcontrol\AcadControl\bin\Microsoft.ReportViewer.WebForms.DLL

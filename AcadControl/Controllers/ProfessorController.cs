@@ -15,6 +15,29 @@ namespace AcadControl.Controllers
             return con.Professor.ToList();
         }
 
+        public List<Professor> find_by(String nome, String matricula)
+        {
+            var con = db();
+
+            if (nome == "" && matricula == "")
+            {
+                return con.Professor.ToList();
+            }
+            else
+            { 
+                if(matricula == "")
+                {
+                    return con.Professor.Where(Professor => Professor.nom_prof.Contains(nome)).ToList();
+                }
+                else
+                {
+                    int mat = int.Parse(matricula);
+                    return con.Professor.Where(Professor => Professor.nom_prof.Contains(nome) && Professor.mat_prof == mat).ToList();
+                }
+   
+            }
+        }
+
         public bool create(String nom_prof, int mat_prof)
         {
             var con = db();

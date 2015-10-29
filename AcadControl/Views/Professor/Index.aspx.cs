@@ -43,6 +43,12 @@ namespace AcadControl.Views.Professor
             loadProfessores();
         }
 
+        protected void Pesquisar_Click(object sender, EventArgs e)
+        {
+            ProfessoresList.DataSource = controller().find_by(nome_prof.Text, mat_alu.Text);
+            ProfessoresList.DataBind();
+        }
+
         private void loadProfessores()
         {
             ProfessoresList.DataSource = controller().index();
