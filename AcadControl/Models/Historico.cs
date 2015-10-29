@@ -16,7 +16,7 @@ namespace AcadControl.Models
     {
         public int ano { get; set; }
         public int semestre { get; set; }
-        public int id_aluno { get; set; }
+        public int mat_alu { get; set; }
         public int id_disc { get; set; }
         public bool situacao { get; set; }
         public double media { get; set; }

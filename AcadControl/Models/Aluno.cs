@@ -21,7 +21,7 @@ namespace AcadControl.Models
             this.Matricula = new HashSet<Matricula>();
         }
     
-        public int id { get; set; }
+        public int mat_alu { get; set; }
         public string nom_alu { get; set; }
         public int tot_cred { get; set; }
         public System.DateTime dat_nasc { get; set; }
