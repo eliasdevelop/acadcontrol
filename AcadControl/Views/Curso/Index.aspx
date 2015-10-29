@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPage/App.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="AcadControl.Views.Disciplina.Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPage/App.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="AcadControl.Views.Curso.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+        <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Filtro</h3>
@@ -11,13 +11,13 @@
                 <div class="form-group">
                     <asp:Label Text="Nome" runat="server" />
                     <div>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="nome_disc" />
+                        <asp:TextBox runat="server" CssClass="form-control" ID="nom_curso" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <asp:Label Text="Tipo" runat="server" />
+                    <asp:Label Text="Responsavel" runat="server" />
                     <div>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="tpo_disc" />
+                        <asp:TextBox runat="server" CssClass="form-control" ID="responsavel" />
                     </div>
                 </div>
                 <div>
@@ -27,17 +27,17 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Disciplinas</h3>
+                <h3 class="panel-title">Cursos</h3>
             </div>
             <div class="panel-body">
-                <a href="Form.aspx" title="Nova Disciplina" class="btn btn-primary">Nova Disciplina</a>
+                <a href="Form.aspx" title="Novo Curso" class="btn btn-primary">Novo Curso</a>
                 <br/><br/>
-                <asp:GridView ID="DisciplinasList" runat="server" DataKeyNames="id" OnRowDataBound="DisciplinasList_RowDataBound"
+                <asp:GridView ID="CursosList" runat="server" DataKeyNames="id" OnRowDataBound="CursosList_RowDataBound"
                     AutoGenerateColumns="false" CssClass="table table-striped" >
                     <Columns>
-                        <asp:BoundField HeaderText="Nome" DataField="nom_disc" />
-                        <asp:BoundField HeaderText="Creditos" DataField="creditos" />
-                        <asp:BoundField HeaderText="Tipo Disc" DataField="tpo_disc" />
+                        <asp:BoundField HeaderText="Nome" DataField="nom_curso" />
+                        <asp:BoundField HeaderText="Creditos" DataField="tot_cred" />
+                        <asp:BoundField HeaderText="Responsável" DataField="professor.nom_prof" />
                         <asp:HyperLinkField Text="Editar" />
                         <asp:TemplateField>
                             <ItemTemplate>

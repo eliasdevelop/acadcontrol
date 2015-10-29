@@ -43,6 +43,13 @@ namespace AcadControl.Views.Disciplina
             loadDisciplinas();
         }
 
+        protected void Pesquisar_Click(object sender, EventArgs e)
+        {
+
+            DisciplinasList.DataSource = controller().find_by(nome_disc.Text, tpo_disc.Text);
+            DisciplinasList.DataBind();
+        }
+
         private void loadDisciplinas()
         {
             DisciplinasList.DataSource = controller().index();

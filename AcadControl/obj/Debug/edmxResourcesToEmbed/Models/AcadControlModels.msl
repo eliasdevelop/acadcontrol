@@ -4,7 +4,7 @@
     <EntitySetMapping Name="Aluno">
       <EntityTypeMapping TypeName="AcadControlModel.Aluno">
         <MappingFragment StoreEntitySet="Aluno">
-          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mat_alu" ColumnName="mat_alu" />
           <ScalarProperty Name="nom_alu" ColumnName="nom_alu" />
           <ScalarProperty Name="tot_cred" ColumnName="tot_cred" />
           <ScalarProperty Name="dat_nasc" ColumnName="dat_nasc" />
@@ -40,7 +40,7 @@
         <MappingFragment StoreEntitySet="Historico">
           <ScalarProperty Name="ano" ColumnName="ano" />
           <ScalarProperty Name="semestre" ColumnName="semestre" />
-          <ScalarProperty Name="id_aluno" ColumnName="id_aluno" />
+          <ScalarProperty Name="mat_alu" ColumnName="mat_alu" />
           <ScalarProperty Name="id_disc" ColumnName="id_disc" />
           <ScalarProperty Name="situacao" ColumnName="situacao" />
           <ScalarProperty Name="media" ColumnName="media" />
@@ -53,7 +53,7 @@
         <MappingFragment StoreEntitySet="Matricula">
           <ScalarProperty Name="ano" ColumnName="ano" />
           <ScalarProperty Name="semestre" ColumnName="semestre" />
-          <ScalarProperty Name="id_aluno" ColumnName="id_aluno" />
+          <ScalarProperty Name="mat_alu" ColumnName="mat_alu" />
           <ScalarProperty Name="id_disc" ColumnName="id_disc" />
           <ScalarProperty Name="nota_01" ColumnName="nota_01" />
           <ScalarProperty Name="nota_02" ColumnName="nota_02" />

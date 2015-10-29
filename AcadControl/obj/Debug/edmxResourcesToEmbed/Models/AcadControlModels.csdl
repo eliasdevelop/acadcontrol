@@ -2,9 +2,9 @@
 <Schema Namespace="AcadControlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Aluno">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="mat_alu" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mat_alu" Type="Int32" Nullable="false" />
     <Property Name="nom_alu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="tot_cred" Type="Int32" Nullable="false" />
     <Property Name="dat_nasc" Type="DateTime" Nullable="false" Precision="0" />
@@ -45,12 +45,12 @@
     <Key>
       <PropertyRef Name="ano" />
       <PropertyRef Name="semestre" />
-      <PropertyRef Name="id_aluno" />
+      <PropertyRef Name="mat_alu" />
       <PropertyRef Name="id_disc" />
     </Key>
     <Property Name="ano" Type="Int32" Nullable="false" />
     <Property Name="semestre" Type="Int32" Nullable="false" />
-    <Property Name="id_aluno" Type="Int32" Nullable="false" />
+    <Property Name="mat_alu" Type="Int32" Nullable="false" />
     <Property Name="id_disc" Type="Int32" Nullable="false" />
     <Property Name="situacao" Type="Boolean" Nullable="false" />
     <Property Name="media" Type="Double" Nullable="false" />
@@ -63,12 +63,12 @@
     <Key>
       <PropertyRef Name="ano" />
       <PropertyRef Name="semestre" />
-      <PropertyRef Name="id_aluno" />
+      <PropertyRef Name="mat_alu" />
       <PropertyRef Name="id_disc" />
     </Key>
     <Property Name="ano" Type="Int32" Nullable="false" />
     <Property Name="semestre" Type="Int32" Nullable="false" />
-    <Property Name="id_aluno" Type="Int32" Nullable="false" />
+    <Property Name="mat_alu" Type="Int32" Nullable="false" />
     <Property Name="id_disc" Type="Int32" Nullable="false" />
     <Property Name="nota_01" Type="Double" />
     <Property Name="nota_02" Type="Double" />
@@ -146,10 +146,10 @@
     <End Role="Historico" Type="Self.Historico" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Aluno">
-        <PropertyRef Name="id" />
+        <PropertyRef Name="mat_alu" />
       </Principal>
       <Dependent Role="Historico">
-        <PropertyRef Name="id_aluno" />
+        <PropertyRef Name="mat_alu" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -158,10 +158,10 @@
     <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Aluno">
-        <PropertyRef Name="id" />
+        <PropertyRef Name="mat_alu" />
       </Principal>
       <Dependent Role="Matricula">
-        <PropertyRef Name="id_aluno" />
+        <PropertyRef Name="mat_alu" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

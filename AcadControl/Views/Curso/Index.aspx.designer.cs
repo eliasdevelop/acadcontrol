@@ -7,36 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AcadControl.Views.Disciplina {
+namespace AcadControl.Views.Curso {
     
     
     public partial class Index {
         
         /// <summary>
-        /// nome_disc control.
+        /// nom_curso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nome_disc;
+        protected global::System.Web.UI.WebControls.TextBox nom_curso;
         
         /// <summary>
-        /// tpo_disc control.
+        /// responsavel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tpo_disc;
+        protected global::System.Web.UI.WebControls.TextBox responsavel;
         
         /// <summary>
-        /// DisciplinasList control.
+        /// CursosList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView DisciplinasList;
+        protected global::System.Web.UI.WebControls.GridView CursosList;
     }
 }

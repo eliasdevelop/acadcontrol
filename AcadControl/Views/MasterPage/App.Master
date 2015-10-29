@@ -33,6 +33,11 @@
                            Professores
                         </a> 
                     </li>
+                    <li>
+                        <a href="/Views/Curso/Index.aspx"> 
+                           Cursos
+                        </a> 
+                    </li>
                 </ul>
             </div>
         </div>
