@@ -38,6 +38,11 @@
                            Cursos
                         </a> 
                     </li>
+                    <li>
+                        <a href="/Views/PeriodoLetivo/Index.aspx"> 
+                           Periodos Letivos
+                        </a> 
+                    </li>
                 </ul>
             </div>
         </div>
