@@ -111,6 +111,8 @@
     <Content Include="Assets\bootstrap\Scripts\jquery-1.9.1.js" />
     <Content Include="Assets\bootstrap\Scripts\jquery-1.9.1.min.js" />
     <Content Include="Assets\bootstrap\Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Aluno\Form.aspx" />
+    <Content Include="Views\Aluno\Index.aspx" />
     <Content Include="Views\Curso\Form.aspx" />
     <Content Include="Views\Curso\Index.aspx" />
     <Content Include="Views\Disciplina\Form.aspx" />
@@ -138,11 +140,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\PeriodoLetivoController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Helpers\CursoHelper.cs" />
     <Compile Include="Helpers\ProfessorHelper.cs" />
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -194,6 +198,20 @@
       <DependentUpon>AcadControlModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Aluno\Form.aspx.cs">
+      <DependentUpon>Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Aluno\Form.aspx.designer.cs">
+      <DependentUpon>Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Aluno\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Aluno\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Curso\Form.aspx.cs">
       <DependentUpon>Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

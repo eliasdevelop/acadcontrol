@@ -24,6 +24,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        <a href="/Views/Aluno/Index.aspx"> 
+                           Alunos
+                        </a> 
+                    </li>
+                    <li>
                         <a href="/Views/Disciplina/Index.aspx"> 
                            Disciplinas
                         </a> 
