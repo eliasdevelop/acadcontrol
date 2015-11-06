@@ -48,6 +48,11 @@
                            Periodos Letivos
                         </a> 
                     </li>
+                    <li>
+                        <a href="/Views/Matriz/Index.aspx"> 
+                           Matrizes
+                        </a> 
+                    </li>
                 </ul>
             </div>
         </div>
