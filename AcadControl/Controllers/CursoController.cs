@@ -28,23 +28,57 @@ namespace AcadControl.Controllers
             var con = db();
 
             Curso curso = new Curso();
-            curso.nom_curso = nome;
-            curso.tot_cred = tot_cred;
-            
+
             if (id_prof == "")
             {
                 curso.id_prof = null;
+
+                curso.nom_curso = nome;
+                curso.tot_cred = tot_cred;
+
+                con.Curso.Add(curso);
+
+                int rows = con.SaveChanges();
+
+                return rows.Equals(1);
             }
             else
             {
-                curso.id_prof = Int32.Parse(id_prof);
+                if (validateProf(Int32.Parse(id_prof)))
+                {
+                    curso.id_prof = Int32.Parse(id_prof);
+
+                    curso.nom_curso = nome;
+                    curso.tot_cred = tot_cred;
+
+                    con.Curso.Add(curso);
+
+                    int rows = con.SaveChanges();
+
+                    return rows.Equals(1);
+                }
+                else
+                {
+                    return false;
+                }
             }
+        }
 
-            con.Curso.Add(curso);
+        private bool validateProf(int id_prof)
+        {
+            var con = db();
 
-            int rows = con.SaveChanges();
+            int countCursos = con.Curso.Where(Curso => Curso.id_prof == id_prof).Count();
 
-            return rows.Equals(1);
+            if (countCursos == 3)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            
         }
 
         public Curso edit(int id)
