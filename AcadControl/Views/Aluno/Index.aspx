@@ -44,7 +44,7 @@
                     AutoGenerateColumns="false" CssClass="table table-striped" >
                     <Columns>
                         <asp:BoundField HeaderText="Aluno" DataField="nom_alu" />
-                        <asp:BoundField HeaderText="Data Nasc" DataField="dat_nasc" />
+                        <asp:BoundField HeaderText="Data Nasc" DataField="dat_nasc" DataFormatString="{0:dd/MM/yyyy}"/>
                         <asp:BoundField HeaderText="Media Geral" DataField="mgp" />
                         <asp:HyperLinkField Text="Editar" />
                         <asp:TemplateField>

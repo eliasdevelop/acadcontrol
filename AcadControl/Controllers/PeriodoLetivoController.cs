@@ -18,17 +18,20 @@ namespace AcadControl.Controllers
         public List<Periodo_Letivo> find_by(String ano, String semestre, String dat_ini, String dat_fim)
         {
             var con = db();
-           
 
-            if (ano == "" && semestre == "" && dat_ini == "" && dat_fim == "")
-            {
-                return con.Periodo_Letivo.ToList();
-            }
-            else
-            {
-                return con.Periodo_Letivo.ToList();
-                //return con.Periodo_Letivo.SqlQuery("SELECT * FROM Periodo_Letivo WHERE ano = {0} AND semestre = {1} AND dat_ini = {3} AND dat_fim = {4}", ano, semestre, dat_ini, dat_fim).ToList();
-            }
+            int? ano_v, semestre_v;
+            DateTime? dat_ini_v, dat_fim_v;
+
+            ano_v = (String.IsNullOrEmpty(ano)) ? ano_v = null : ano_v = Int32.Parse(ano);
+            semestre_v = (String.IsNullOrEmpty(semestre)) ? semestre_v = null : semestre_v = Int32.Parse(semestre);
+            dat_ini_v = (String.IsNullOrEmpty(dat_ini)) ? dat_ini_v = null : dat_ini_v = DateTime.Parse(dat_ini);
+            dat_fim_v = (String.IsNullOrEmpty(dat_fim)) ? dat_fim_v = null : dat_fim_v = DateTime.Parse(dat_fim);
+
+            return con.Periodo_Letivo.Where(Periodo_Letivo =>  (!ano_v.HasValue || Periodo_Letivo.ano == ano_v.Value) &&
+                                                               (!semestre_v.HasValue || Periodo_Letivo.semestre == semestre_v.Value) &&
+                                                               (!dat_ini_v.HasValue || Periodo_Letivo.dat_ini == dat_ini_v.Value) &&
+                                                               (!dat_fim_v.HasValue || Periodo_Letivo.dat_fim == dat_fim_v.Value)).ToList();
+
         }
 
         public bool create(int ano, int semestre, DateTime dat_ini, DateTime dat_fim)

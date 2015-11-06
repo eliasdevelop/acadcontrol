@@ -19,14 +19,8 @@ namespace AcadControl.Controllers
         {
             var con = db();
 
-            if (nome == "" && tipo == "")
-            {
-                return con.Disciplina.ToList();
-            }
-            else
-            {
-                return con.Disciplina.Where(Disciplina => Disciplina.nom_disc.Contains(nome) && Disciplina.tpo_disc.Contains(tipo)).ToList();
-            }
+            return con.Disciplina.Where(Disciplina => Disciplina.nom_disc.Contains(nome) && 
+                                                      Disciplina.tpo_disc.Contains(tipo)).ToList();
         }
 
         public bool create(String nome, int creditos, String tipo_disc, int horas_obrig, int limite_faltas)

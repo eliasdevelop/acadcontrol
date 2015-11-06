@@ -19,14 +19,8 @@ namespace AcadControl.Controllers
         {
             var con = db();
 
-            if (nome == "" && responsavel == "")
-            {
-                return con.Curso.ToList();
-            }
-            else
-            {
-                return con.Curso.Where(Curso => Curso.nom_curso.Contains(nome) && Curso.Professor.nom_prof.Contains(responsavel)).ToList();
-            }
+            return con.Curso.Where(Curso => Curso.nom_curso.Contains(nome) && 
+                                            Curso.Professor.nom_prof.Contains(responsavel)).ToList();
         }
 
         public bool create(String nome, int tot_cred, String id_prof)

@@ -13,8 +13,12 @@ namespace AcadControl.Views.Aluno
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadAlunos();
-            populateDropDown();
+            if (!IsPostBack)
+            {
+                loadAlunos();
+                populateDropDown();
+            }
+            
         }
 
         protected void AlunosList_RowDataBound(object sender, GridViewRowEventArgs e)

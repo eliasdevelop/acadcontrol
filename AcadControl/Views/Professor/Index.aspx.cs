@@ -12,7 +12,10 @@ namespace AcadControl.Views.Professor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadProfessores();
+            if (!IsPostBack)
+            {
+                loadProfessores();
+            }    
         }
 
         protected void ProfessoresList_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -45,7 +48,17 @@ namespace AcadControl.Views.Professor
 
         protected void Pesquisar_Click(object sender, EventArgs e)
         {
-            ProfessoresList.DataSource = controller().find_by(nome_prof.Text, mat_alu.Text);
+            int imat_alu = 0;
+
+            if (Int32.TryParse(mat_alu.Text, out imat_alu))
+            {
+                ProfessoresList.DataSource = controller().find_by(nome_prof.Text, imat_alu);
+            }
+            else
+            {
+                ProfessoresList.DataSource = controller().find_by(nome_prof.Text, null);
+            }
+            
             ProfessoresList.DataBind();
         }
 

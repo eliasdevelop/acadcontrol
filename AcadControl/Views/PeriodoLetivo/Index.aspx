@@ -8,28 +8,40 @@
                 <h3 class="panel-title">Filtro</h3>
             </div>
             <div class="panel-body">
-                <div class="form-group">
-                    <asp:Label Text="Ano" runat="server" />
-                    <div>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="ano" />
+                 <div class="row">
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <asp:Label Text="Ano" runat="server" />
+                            <div>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="ano" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <asp:Label Text="Semestre" runat="server" />
+                            <div>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="semestre" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <asp:Label Text="Semestre" runat="server" />
-                    <div>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="semestre" />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <asp:Label Text="Data Inicio" runat="server" />
+                            <div>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="dat_ini" />
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <asp:Label Text="Data Inicio" runat="server" />
-                    <div>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="dat_ini" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <asp:Label Text="Data Fim" runat="server" />
-                    <div>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="dat_fim" />
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <asp:Label Text="Data Fim" runat="server" />
+                            <div>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="dat_fim" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -44,12 +56,16 @@
             <div class="panel-body">
                 <a href="Form.aspx" title="Novo Periodo Letivo" class="btn btn-primary">Novo Periodo Letivo</a>
                 <br/><br/>
-                <asp:GridView ID="PeriodoLetivoList" runat="server" DataKeyNames="ano, semestre" OnRowDataBound="PeriodoLetivoList_RowDataBound"
-                    AutoGenerateColumns="false" CssClass="table table-striped" >
+                <asp:GridView ID="PeriodoLetivoList" runat="server" DataKeyNames="ano,semestre" OnRowDataBound="PeriodoLetivoList_RowDataBound"
+                    AutoGenerateColumns="False" CssClass="table table-striped" >
                     <Columns>
-                        <asp:BoundField HeaderText="Semestre" DataField="ano" />
-                        <asp:BoundField HeaderText="Data Inicio" DataField="dat_ini" />
-                        <asp:BoundField HeaderText="Data Fim" DataField="dat_fim" />
+                        <asp:TemplateField HeaderText="Semestre">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# String.Format("{0}.{1}", Eval("ano"), Eval("semestre")) %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField HeaderText="Data Inicio" DataField="dat_ini" DataFormatString="{0:dd/MM/yyyy}" />
+                        <asp:BoundField HeaderText="Data Fim" DataField="dat_fim" DataFormatString="{0:dd/MM/yyyy}" />
                         <asp:HyperLinkField Text="Editar" />
                         <asp:TemplateField>
                             <ItemTemplate>

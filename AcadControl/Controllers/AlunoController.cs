@@ -19,14 +19,14 @@ namespace AcadControl.Controllers
         {
             var con = db();
 
-            if (nome == "" && matricula == "" && id_curso == "")
-            {
-                return con.Aluno.ToList();
-            }
-            else
-            {
-                return con.Aluno.ToList();
-            }
+            int? mat, curso = 0;
+
+            mat = (String.IsNullOrEmpty(matricula)) ? mat = null : mat = Int32.Parse(matricula);
+            curso = (String.IsNullOrEmpty(id_curso)) ? curso = null : curso = Int32.Parse(id_curso);
+
+            return con.Aluno.Where(Aluno => Aluno.nom_alu.Contains(nome) &&
+                                            (!mat.HasValue || Aluno.mat_alu == mat.Value) &&
+                                            (!curso.HasValue || Aluno.id_curso == curso.Value)).ToList();
         }
 
         public bool create(String nom_alu, DateTime dat_nasc, int id_curso)
