@@ -12,7 +12,10 @@ namespace AcadControl.Views.PeriodoLetivo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadPeriodosLetivos();
+            if (!IsPostBack)
+            {
+                loadPeriodosLetivos();
+            }       
         }
 
         protected void PeriodoLetivoList_RowDataBound(object sender, GridViewRowEventArgs e)

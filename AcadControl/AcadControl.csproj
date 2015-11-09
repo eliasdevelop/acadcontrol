@@ -89,6 +89,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\PeriodoLetivoHelper.cs" />
+    <Compile Include="Views\Turma\Form.aspx.cs">
+      <DependentUpon>Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Turma\Form.aspx.designer.cs">
+      <DependentUpon>Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Turma\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Turma\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Content Include="Assets\bootstrap\Content\bootstrap.css" />
     <Content Include="Assets\bootstrap\Content\bootstrap.min.css" />
     <Content Include="Assets\css\app.css" />
@@ -141,6 +156,8 @@
     <Content Include="Views\PeriodoLetivo\Index.aspx" />
     <Content Include="Views\Professor\Form.aspx" />
     <Content Include="Views\Professor\Index.aspx" />
+    <Content Include="Views\Turma\Form.aspx" />
+    <Content Include="Views\Turma\Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +167,7 @@
     <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\PeriodoLetivoController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Controllers\TurmaController.cs" />
     <Compile Include="Helpers\CursoHelper.cs" />
     <Compile Include="Helpers\DisciplinaHelper.cs" />
     <Compile Include="Helpers\ProfessorHelper.cs" />

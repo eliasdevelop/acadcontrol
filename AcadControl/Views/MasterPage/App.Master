@@ -53,6 +53,11 @@
                            Matrizes
                         </a> 
                     </li>
+                    <li>
+                        <a href="/Views/Turma/Index.aspx"> 
+                           Turmas
+                        </a> 
+                    </li>
                 </ul>
             </div>
         </div>
