@@ -58,6 +58,11 @@
                            Turmas
                         </a> 
                     </li>
+                    <li>
+                        <a href="/Views/Matricula/Index.aspx"> 
+                           Matriculas
+                        </a> 
+                    </li>
                 </ul>
             </div>
         </div>

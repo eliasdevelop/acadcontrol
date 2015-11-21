@@ -89,7 +89,30 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MatriculaController.cs" />
+    <Compile Include="Helpers\AlunoHelper.cs" />
     <Compile Include="Helpers\PeriodoLetivoHelper.cs" />
+    <Compile Include="Views\Matricula\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Matricula\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Matricula\New.aspx.cs">
+      <DependentUpon>New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Matricula\New.aspx.designer.cs">
+      <DependentUpon>New.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Matricula\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Matricula\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Turma\Form.aspx.cs">
       <DependentUpon>Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -150,6 +173,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Matricula\Edit.aspx" />
+    <Content Include="Views\Matricula\New.aspx" />
+    <Content Include="Views\Matricula\Index.aspx" />
     <Content Include="Views\Matriz\Form.aspx" />
     <Content Include="Views\Matriz\Index.aspx" />
     <Content Include="Views\PeriodoLetivo\Form.aspx" />
